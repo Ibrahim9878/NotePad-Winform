@@ -43,10 +43,11 @@
             labelColor = new Label();
             ColorComboBox = new ComboBox();
             LoadBox = new TextBox();
-            textBox1 = new TextBox();
+            SaveBox = new TextBox();
             buttonLoad = new Button();
             buttonSave = new Button();
             richTextBox1 = new RichTextBox();
+            colorDialog1 = new ColorDialog();
             SuspendLayout();
             // 
             // labelFont
@@ -88,12 +89,13 @@
             // FontComboBox
             // 
             FontComboBox.BackColor = SystemColors.MenuBar;
-            FontComboBox.ForeColor = SystemColors.ControlLight;
+            FontComboBox.ForeColor = Color.Black;
             FontComboBox.FormattingEnabled = true;
             FontComboBox.Location = new Point(3, 25);
             FontComboBox.Name = "FontComboBox";
             FontComboBox.Size = new Size(100, 23);
             FontComboBox.TabIndex = 4;
+            FontComboBox.SelectedIndexChanged += FontComboBox_SelectedIndexChanged;
             // 
             // SizeComboBox
             // 
@@ -103,6 +105,7 @@
             SizeComboBox.Name = "SizeComboBox";
             SizeComboBox.Size = new Size(55, 23);
             SizeComboBox.TabIndex = 5;
+            SizeComboBox.SelectedIndexChanged += SizeComboBox_SelectedIndexChanged;
             // 
             // buttonBold
             // 
@@ -114,6 +117,7 @@
             buttonBold.TabIndex = 6;
             buttonBold.Text = "B";
             buttonBold.UseVisualStyleBackColor = false;
+            buttonBold.Click += buttonBold_Click;
             // 
             // buttonUnderLine
             // 
@@ -125,6 +129,7 @@
             buttonUnderLine.TabIndex = 7;
             buttonUnderLine.Text = "U";
             buttonUnderLine.UseVisualStyleBackColor = false;
+            buttonUnderLine.Click += buttonUnderLine_Click;
             // 
             // buttonItalic
             // 
@@ -136,6 +141,7 @@
             buttonItalic.TabIndex = 8;
             buttonItalic.Text = "/";
             buttonItalic.UseVisualStyleBackColor = false;
+            buttonItalic.Click += buttonItalic_Click;
             // 
             // buttonRight
             // 
@@ -147,6 +153,7 @@
             buttonRight.TabIndex = 11;
             buttonRight.Text = "R";
             buttonRight.UseVisualStyleBackColor = false;
+            buttonRight.Click += buttonRight_Click;
             // 
             // buttonCenter
             // 
@@ -158,6 +165,7 @@
             buttonCenter.TabIndex = 10;
             buttonCenter.Text = "C";
             buttonCenter.UseVisualStyleBackColor = false;
+            buttonCenter.Click += buttonCenter_Click;
             // 
             // buttonLeft
             // 
@@ -169,6 +177,7 @@
             buttonLeft.TabIndex = 9;
             buttonLeft.Text = "L";
             buttonLeft.UseVisualStyleBackColor = false;
+            buttonLeft.Click += buttonLeft_Click;
             // 
             // labelColor
             // 
@@ -198,14 +207,14 @@
             LoadBox.Size = new Size(156, 20);
             LoadBox.TabIndex = 14;
             // 
-            // textBox1
+            // SaveBox
             // 
-            textBox1.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(510, 32);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Tap to Enter name and save.. ";
-            textBox1.Size = new Size(156, 20);
-            textBox1.TabIndex = 15;
+            SaveBox.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
+            SaveBox.Location = new Point(510, 32);
+            SaveBox.Name = "SaveBox";
+            SaveBox.PlaceholderText = "Tap to Enter name and save.. ";
+            SaveBox.Size = new Size(156, 20);
+            SaveBox.TabIndex = 15;
             // 
             // buttonLoad
             // 
@@ -216,6 +225,7 @@
             buttonLoad.TabIndex = 16;
             buttonLoad.Text = "Load";
             buttonLoad.UseVisualStyleBackColor = false;
+            buttonLoad.Click += buttonLoad_Click;
             // 
             // buttonSave
             // 
@@ -226,6 +236,7 @@
             buttonSave.TabIndex = 17;
             buttonSave.Text = "Save";
             buttonSave.UseVisualStyleBackColor = false;
+            buttonSave.Click += buttonSave_Click;
             // 
             // richTextBox1
             // 
@@ -243,7 +254,7 @@
             Controls.Add(richTextBox1);
             Controls.Add(buttonSave);
             Controls.Add(buttonLoad);
-            Controls.Add(textBox1);
+            Controls.Add(SaveBox);
             Controls.Add(LoadBox);
             Controls.Add(ColorComboBox);
             Controls.Add(labelColor);
@@ -259,6 +270,7 @@
             Controls.Add(labelFontStyle);
             Controls.Add(labelSize);
             Controls.Add(labelFont);
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -282,9 +294,10 @@
         private Label labelColor;
         private ComboBox ColorComboBox;
         private TextBox LoadBox;
-        private TextBox textBox1;
+        private TextBox SaveBox;
         private Button buttonLoad;
         private Button buttonSave;
         private RichTextBox richTextBox1;
+        private ColorDialog colorDialog1;
     }
 }
